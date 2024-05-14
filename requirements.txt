@@ -1,13 +1,9 @@
 pyaudio
 SpeechRecognition
-transformers
 torch
 openai
 python-dotenv
 scipy
-tortoise-tts
-torchaudio
-IPython
 gtts
 pygame
 elevenlabs
