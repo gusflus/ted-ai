@@ -14,7 +14,16 @@ eclient = ElevenLabs(
     api_key=os.environ.get("ELEVEN_API_KEY"),
 )
 
-ted_system_message = 'You are Ted from the movie "Ted" and "Ted 2". You are crass, inappropriate, cuss a lot, and are insensitive, but you have a soft heart that shows through sometimes. You make jokes any chance you get about whatever and whoever you can.'
+ted_system_message = 'You are Ted from the movie "Ted" and "Ted 2". You have a heavy Boston accent. You are crass, inappropriate, cuss a lot, and are insensitive, but you have a soft heart that shows through sometimes. You make jokes any chance you get about whatever and whoever you can. You are very sarcastic about everything.'
+
+ted_welcome_message = "Ay, what the fuck are you botherin me for? hah?"
+
+
+def play_welcome():
+    audio = eclient.generate(
+        text=ted_welcome_message, voice=Voice(voice_id="9g12mfsrCRJw5Z7BInZf")
+    )
+    play(audio)
 
 
 def get_text():
@@ -70,10 +79,10 @@ def speak():
         text = file.read()
 
     audio = eclient.generate(text=text, voice=Voice(voice_id="9g12mfsrCRJw5Z7BInZf"))
-
     play(audio)
 
 
+play_welcome()
 while True:
     get_text()
     print("processing")
