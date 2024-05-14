@@ -1,7 +1,6 @@
 # main loop of voice to text then ted-openai then text to voice
 import os
 
-import pygame
 import speech_recognition as sr
 from dotenv import load_dotenv
 from elevenlabs import Voice, play
@@ -32,8 +31,10 @@ def get_text():
             file.write(text)
     except sr.UnknownValueError:
         print("Sorry, I could not understand what you said.")
+        exit()
     except sr.RequestError as e:
         print("Sorry, an error occurred. {0}".format(e))
+        exit()
 
 
 def get_response():
@@ -75,9 +76,10 @@ def speak():
 
 while True:
     get_text()
+    print("processing")
     get_response()
+    print("responding")
     speak()
 
     os.remove("input.txt")
     os.remove("output.txt")
-    os.remove("output.mp3")
