@@ -10,3 +10,4 @@ torchaudio
 IPython
 gtts
 pygame
+elevenlabs
